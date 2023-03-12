@@ -1,0 +1,14 @@
+node_modules
+package-lock.json
+yarn.lock
+yarn-error.log
+.vscode/
+build/
+temp/
+.env
+coverage
+ormconfig.json
+.DS_STORE
+logs/
+dist/
+diagrams/
