@@ -4,7 +4,6 @@ interface IUpdateUserDTO {
   name?: string;
   email?: string;
   cpf?: string;
-  birth_date?: Date;
 }
 
 export { IUpdateUserDTO };
