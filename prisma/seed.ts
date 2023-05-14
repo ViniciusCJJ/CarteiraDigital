@@ -10,6 +10,8 @@ const main = async () => {
       name: 'Master',
       password: hashSync('123456', 8),
       role: 'Master',
+      cpf: '00000000000',
+      birth_date: new Date(),
     },
     update: {},
     where: {

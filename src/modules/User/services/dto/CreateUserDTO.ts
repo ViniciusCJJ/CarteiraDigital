@@ -1,10 +1,12 @@
-import { Roles } from '@shared/enum/Roles';
+import { UserRole } from '@prisma/client';
 
 interface ICreateUserDTO {
   name: string;
   email: string;
   password: string;
-  role?: Roles;
+  cpf: string;
+  birth_date: Date;
+  role?: UserRole;
 }
 
 export { ICreateUserDTO };

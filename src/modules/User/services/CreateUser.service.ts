@@ -22,17 +22,25 @@ class CreateUserService {
     name,
     email,
     password,
+    cpf,
+    birth_date,
     role = Roles.User,
   }: ICreateUserDTO): Promise<User> {
     const user_exists = await this.userRepository.findBy({ email });
 
     if (user_exists) throw new AppError('Email já cadastrado');
 
+    const cpf_exists = await this.userRepository.findBy({ cpf });
+
+    if (cpf_exists) throw new AppError('CPF já cadastrado');
+
     const hashed_password = await this.hashProvider.generateHash(password);
 
     const user = await this.userRepository.create({
       name,
       email,
+      cpf,
+      birth_date,
       password: hashed_password,
       role,
     });

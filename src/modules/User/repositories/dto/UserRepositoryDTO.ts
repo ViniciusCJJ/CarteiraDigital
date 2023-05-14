@@ -5,6 +5,8 @@ interface IUserCreate {
   email: string;
   password: string;
   role: UserRole;
+  cpf: string;
+  birth_date: Date;
   device_token?: string;
 }
 

@@ -8,7 +8,7 @@ import { UpdateUserService } from '../services/UpdateUser.service';
 
 class UserController {
   async create(req: Request, res: Response): Promise<Response> {
-    const { name, email, password, role } = req.body;
+    const { name, email, password, role, cpf, birth_date } = req.body;
 
     const createUserService = container.resolve(CreateUserService);
 
@@ -16,6 +16,8 @@ class UserController {
       name,
       email,
       password,
+      cpf,
+      birth_date,
       role,
     });
 
