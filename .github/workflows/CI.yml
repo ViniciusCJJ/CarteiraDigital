@@ -61,4 +61,4 @@ jobs:
             cd ~/apps/projetoles
             yarn
             yarn prisma migrate deploy
-            pm2 restart projetoles-api
+            pm2 restart carteiradigital-api
