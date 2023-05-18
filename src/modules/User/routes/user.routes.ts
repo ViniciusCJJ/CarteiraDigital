@@ -40,6 +40,8 @@ userRouter.delete(
   userAvatarController.delete,
 );
 
+userRouter.get('/dashboard', userController.dashboard);
+
 userRouter.get('/:user_id', showUserMiddleware, userController.show);
 
 userRouter.put('/:user_id', updateUserMiddleware, userController.update);

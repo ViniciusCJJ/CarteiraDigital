@@ -4,6 +4,7 @@ import { container } from 'tsyringe';
 import { CreateUserService } from '../services/CreateUser.service';
 import { DeleteUserService } from '../services/DeleteUser.service';
 import { ShowUserService } from '../services/ShowUser.service';
+import { ShowUserDashboardService } from '../services/ShowUserDashboard.service';
 import { UpdateUserService } from '../services/UpdateUser.service';
 
 class UserController {
@@ -68,6 +69,21 @@ class UserController {
     });
 
     return res.status(204).send();
+  }
+
+  async dashboard(req: Request, res: Response): Promise<Response> {
+    const { id: user_id, isMaster } = req.user;
+
+    const showUserDashboardService = container.resolve(
+      ShowUserDashboardService,
+    );
+
+    const user = await showUserDashboardService.execute({
+      user_id,
+      isMaster,
+    });
+
+    return res.json(user);
   }
 }
 
