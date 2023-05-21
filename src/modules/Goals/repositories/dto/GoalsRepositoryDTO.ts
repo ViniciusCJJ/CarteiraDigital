@@ -1,0 +1,8 @@
+interface IGoalsCreate {
+  title: string;
+  value: number;
+  final_date: Date;
+  user_id: string;
+}
+
+export { IGoalsCreate };
