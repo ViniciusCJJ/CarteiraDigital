@@ -27,6 +27,8 @@ class ShowUserService {
 
     if (!user) throw new AppError('Usuário não encontrado', 404);
 
+    user.avatar = `${process.env.APP_API_URL}files/${user.avatar}`;
+
     return plainToInstance(User, user);
   }
 }

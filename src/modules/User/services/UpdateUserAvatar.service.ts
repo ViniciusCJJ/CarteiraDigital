@@ -41,6 +41,8 @@ class UpdateUserAvatarService {
 
     const newUser = await this.userRepository.update(user);
 
+    newUser.avatar = `${process.env.APP_API_URL}files/${newUser.avatar}`;
+
     return plainToInstance(User, newUser);
   }
 }
