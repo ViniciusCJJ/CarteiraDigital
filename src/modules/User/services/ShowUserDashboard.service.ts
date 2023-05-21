@@ -4,6 +4,7 @@ import { inject, injectable } from 'tsyringe';
 import { plainToInstance } from 'class-transformer';
 import { ITransactionsRepository } from '@modules/Transactions/repositories/TransactionsRepository.interface';
 import { Transactions } from '@prisma/client';
+import { INotificationsRepository } from '@modules/Notifications/repositories/NotificationsRepositories.interface';
 import { IUserRepository } from '../repositories/UserRepository.interface';
 import { User } from '../entities/User';
 import { IShowUserDashboardDTO } from './dto/ShowUserDashboardDTO';
@@ -22,6 +23,9 @@ class ShowUserDashboardService {
 
     @inject('TransactionsRepository')
     private transactionsRepository: ITransactionsRepository,
+
+    @inject('NotificationsRepository')
+    private notificationsRepository: INotificationsRepository,
   ) {}
 
   public async execute({
@@ -35,7 +39,7 @@ class ShowUserDashboardService {
     const transactions = await this.transactionsRepository.listAll({
       filters: { user_id },
     });
-    // get all Income transactions and sum the value, then get all Outcome transactions and substract the value
+
     const balance = transactions.results.reduce(
       (acc, transaction) =>
         transaction.type === 'Income'
@@ -43,6 +47,14 @@ class ShowUserDashboardService {
           : acc - transaction.value,
       0,
     );
+
+    if (balance < 0) {
+      await this.notificationsRepository.create({
+        title: 'Saldo negativo',
+        text: `Seu saldo está negativo em R$ ${balance}`,
+        user_id,
+      });
+    }
 
     return {
       user: plainToInstance(User, user),
