@@ -5,6 +5,7 @@ export const createTransactionsMiddleware = celebrate({
     title: Joi.string().required().label('Título'),
     value: Joi.number().required().positive().label('Valor'),
     type: Joi.string().required().valid('Income', 'Outcome').label('Tipo'),
+    date: Joi.date().label('Data'),
     category: Joi.string().label('Categoria').empty(''),
   },
 });
@@ -33,6 +34,7 @@ export const updateTransactionsMiddleware = celebrate({
     value: Joi.number().positive().label('Valor'),
     type: Joi.string().valid('Income', 'Outcome').label('Tipo'),
     category: Joi.string().label('Categoria').empty(''),
+    date: Joi.date().label('Data').empty(''),
   },
 });
 

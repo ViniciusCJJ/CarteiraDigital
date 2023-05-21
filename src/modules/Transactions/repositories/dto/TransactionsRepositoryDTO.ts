@@ -5,6 +5,7 @@ interface ITransactionsCreate {
   value: number;
   category?: string;
   type: TransactionsType;
+  date?: Date;
   user_id: string;
 }
 

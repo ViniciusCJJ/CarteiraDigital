@@ -16,6 +16,7 @@ class CreateTransactionsService {
     value,
     type,
     category,
+    date,
     user_id,
   }: ICreateTransactionsDTO): Promise<Transactions> {
     const transactions = await this.transactionsRepository.create({
@@ -23,6 +24,7 @@ class CreateTransactionsService {
       value,
       type,
       category,
+      date,
       user_id,
     });
 

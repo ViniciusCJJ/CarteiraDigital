@@ -10,7 +10,7 @@ import { UpdateTransactionsService } from '../services/UpdateTransactions.servic
 
 class TransactionsController {
   async create(req: Request, res: Response): Promise<Response> {
-    const { title, value, category, type } = req.body;
+    const { title, value, category, type, date } = req.body;
     const { id: request_id } = req.user;
 
     const createTransactionsService = container.resolve(
@@ -21,6 +21,7 @@ class TransactionsController {
       value,
       category,
       type,
+      date,
       user_id: request_id,
     });
 
@@ -66,8 +67,7 @@ class TransactionsController {
   async update(req: Request, res: Response): Promise<Response> {
     const { id } = req.user;
     const { transaction_id } = req.params;
-    const { title, value, category, type } = req.body;
-    console.log(transaction_id);
+    const { title, value, category, type, date } = req.body;
 
     const updateTransactionsService = container.resolve(
       UpdateTransactionsService,
@@ -78,6 +78,7 @@ class TransactionsController {
       value,
       category,
       type,
+      date,
       user_id: id,
       transaction_id,
     });

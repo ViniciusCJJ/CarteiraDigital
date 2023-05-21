@@ -4,6 +4,7 @@ interface IUpdateTransactionsDTO {
   value?: number;
   category?: string;
   type?: string;
+  date?: Date;
   user_id?: string;
   isMaster?: boolean;
 }

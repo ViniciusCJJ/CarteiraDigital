@@ -67,10 +67,11 @@ class TransactionsRepository implements ITransactionsRepository {
     value,
     category,
     type,
+    date,
     user_id,
   }: ITransactionsCreate): Promise<Transactions> {
     const transaction = prisma.transactions.create({
-      data: { title, value, category, type, user_id },
+      data: { title, value, category, type, date, user_id },
     });
 
     return transaction;
