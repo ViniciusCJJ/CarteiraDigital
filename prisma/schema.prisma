@@ -11,18 +11,20 @@ datasource db {
 }
 
 model User {
-  id           String         @id @default(uuid())
-  name         String
-  email        String         @unique
-  password     String
-  cpf          String
-  avatar       String?
-  birth_date   DateTime
-  role         UserRole       @default(User)
-  device_token String?
-  created_at   DateTime       @default(now())
-  updated_at   DateTime       @updatedAt
-  transactions Transactions[]
+  id            String          @id @default(uuid())
+  name          String
+  email         String          @unique
+  password      String
+  cpf           String
+  avatar        String?
+  birth_date    DateTime
+  role          UserRole        @default(User)
+  device_token  String?
+  created_at    DateTime        @default(now())
+  updated_at    DateTime        @updatedAt
+  transactions  Transactions[]
+  goals         Goals[]
+  notifications Notifications[]
 }
 
 enum UserRole {
@@ -38,6 +40,7 @@ model Transactions {
   type       TransactionsType
   user_id    String
   user       User             @relation(fields: [user_id], references: [id])
+  date       DateTime         @default(now())
   created_at DateTime         @default(now())
   updated_at DateTime         @updatedAt
 }
@@ -47,26 +50,29 @@ enum TransactionsType {
   Outcome
 }
 
-// model Goals {
-//   id           String   @id @default(uuid())
-//   title        String
-//   value        Float
-//   total_raised Float    @default(0)
-//   finished     Boolean  @default(false)
-//   final_date   DateTime
-//   user_id      String
-//   user         User     @relation(fields: [user_id], references: [id])
-//   created_at   DateTime @default(now())
-//   updated_at   DateTime @updatedAt
-// }
+model Goals {
+  id            String          @id @default(uuid())
+  title         String
+  value         Float
+  total_raised  Float           @default(0)
+  finished      Boolean         @default(false)
+  final_date    DateTime
+  user_id       String
+  user          User            @relation(fields: [user_id], references: [id])
+  created_at    DateTime        @default(now())
+  updated_at    DateTime        @updatedAt
+  notifications Notifications[]
+}
 
-// model Notifications {
-//   id         String   @id @default(uuid())
-//   title      String
-//   text       String
-//   read       Boolean  @default(false)
-//   user_id    String
-//   user       User     @relation(fields: [user_id], references: [id])
-//   created_at DateTime @default(now())
-//   updated_at DateTime @updatedAt
-// }
+model Notifications {
+  id         String   @id @default(uuid())
+  title      String
+  text       String
+  read       Boolean  @default(false)
+  user_id    String
+  user       User     @relation(fields: [user_id], references: [id])
+  goal_id    String?
+  goal       Goals?   @relation(fields: [goal_id], references: [id])
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
