@@ -10,6 +10,8 @@ import { IGoalsRepository } from '@modules/Goals/repositories/GoalsRepository.in
 import { GoalsRepository } from '@modules/Goals/repositories/GoalsRepository';
 import { NotificationsRepository } from '@modules/Notifications/repositories/NotificationsRepository';
 import { INotificationsRepository } from '@modules/Notifications/repositories/NotificationsRepositories.interface';
+import { IEmailRepository } from '@modules/User/repositories/EmailRepository.interface';
+import { EmailRepository } from '@modules/User/repositories/EmailRepository';
 
 container.registerSingleton<IUserRepository>('UserRepository', UserRepository);
 
@@ -26,4 +28,9 @@ container.registerSingleton<IGoalsRepository>(
 container.registerSingleton<INotificationsRepository>(
   'NotificationsRepository',
   NotificationsRepository,
+);
+
+container.registerSingleton<IEmailRepository>(
+  'EmailRepository',
+  EmailRepository,
 );

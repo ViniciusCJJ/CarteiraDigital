@@ -7,7 +7,6 @@
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "dev:server": "ts-node-dev --inspect -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/server",
     "start": "node dist/shared/server",
-
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "seed:config": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-seeding/dist/cli.js config",
     "seed:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-seeding/dist/cli.js seed"
@@ -22,6 +21,7 @@
     "@babel/plugin-proposal-decorators": "^7.17.9",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-typescript": "^7.12.1",
+    "@faker-js/faker": "^8.3.1",
     "@types/aws-sdk": "^2.7.0",
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.12",
@@ -30,6 +30,7 @@
     "@types/morgan": "^1.9.3",
     "@types/multer": "^1.4.7",
     "@types/node": "^17.0.31",
+    "@types/node-cron": "^3.0.11",
     "@types/nodemailer": "^6.4.4",
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "latest",
@@ -68,6 +69,7 @@
     "morgan": "^1.10.0",
     "morgan-body": "^2.6.6",
     "multer": "^1.4.4",
+    "node-cron": "^3.0.3",
     "nodemailer": "^6.7.4",
     "pg": "^8.7.3",
     "prisma-class-generator": "^0.2.1",

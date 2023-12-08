@@ -1,0 +1,33 @@
+<html lang='pt-br'>
+  <head>
+    <meta charset='UTF-8' />
+    <title>Mensagem Motivacional</title>
+    <style>
+      body { font-family: Arial, Helvetica, sans-serif; line-height: 1.6;
+      background-color: #f4f4f4; margin: 0; padding: 0; } .container {
+      max-width: 600px; margin: 0 auto; padding: 20px; background-color: #fff;
+      border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); } h1 {
+      text-align: center; color: #333; } p { font-size: 18px; margin-bottom:
+      20px; color: #555; } .motivational-message { font-style: italic; color:
+      #007bff; } img { max-width: 100%; height: auto; display: block; margin: 0
+      auto; border-radius: 8px; } .unsubscribe { text-align: center; font-size:
+      14px; color: #777; }
+    </style>
+  </head>
+  <body>
+    <div class='container'>
+      <h1>Olá {{name}}, tudo bem?</h1>
+      <p class='motivational-message'>
+        Mensagem motivacional do dia:
+        <br />
+        {{message}}
+      </p>
+      <p>Imagem do dia:</p>
+      <p><img src='{{image}}' alt='Imagem do dia' /></p>
+      <p class='unsubscribe'>
+        Deseja não receber mais mensagens? Infelizmente não tem como, sinto
+        muito.
+      </p>
+    </div>
+  </body>
+</html>

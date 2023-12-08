@@ -25,6 +25,7 @@ model User {
   transactions  Transactions[]
   goals         Goals[]
   notifications Notifications[]
+  Email         Email[]
 }
 
 enum UserRole {
@@ -75,4 +76,14 @@ model Notifications {
   goal       Goals?   @relation(fields: [goal_id], references: [id])
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+}
+
+model Email {
+  id           String   @id @default(uuid())
+  message      String
+  user_id      String
+  user         User     @relation(fields: [user_id], references: [id])
+  date_to_send DateTime
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
 }
