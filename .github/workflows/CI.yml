@@ -61,4 +61,4 @@ jobs:
             cd ~/apps/carteira-digital
             yarn
             yarn prisma migrate deploy
-            pm2 restart carteira-digital-api
+            pm2 restart carteira-digital
